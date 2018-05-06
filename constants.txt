@@ -1,0 +1,1 @@
+fs.dir_separator instead of os.path.sep : os.path.sep and os.pathsep are hard to differentiate
