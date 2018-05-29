@@ -1,0 +1,6 @@
+started with
+https://mail.python.org/pipermail/python-ideas/2017-January/044217.html
+https://mail.python.org/pipermail/python-ideas/2018-February/049020.html
+
+send to editors:
+- Send your PEP submission to the PEP editors at peps@python.org.

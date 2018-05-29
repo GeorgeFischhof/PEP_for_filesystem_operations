@@ -1,0 +1,104 @@
+PEP: 9999
+Title: Pathlib Module Should Contain All File Operations
+Author: George Fischhof <george at fischhof.hu>
+Status: Draft
+Type: Standards Track
+Content-Type: text/x-rst
+Created: 15-Mar-2018
+Python-Version: 3.8
+Post-History: 12-Mar-2018, 17-Mar-2018
+
+
+Abstract
+========
+
+This PEP proposes pathlib module to be a centralized place for all
+file-system related operations.
+
+
+Rationale
+=========
+
+Right now we have several modules that contain functions related
+to file-system operations mainly the os, pathlib and shutil.
+For beginners it is quite hard to remember where can he / she find
+a function (copy resides in shutil, but the remove function can be
+found in the os module.  (And sometimes developers with moderate
+experience have to check the documentation as well.)
+
+After the release of version 3.6 several methods became aware of
+path-like object.  There are only a few ones which does not support
+the path-like object.  After making these methods path-like object
+aware, these functions could be added to pathlib.
+
+With functions in pathlib the developers should not have to think
+on which method (function) can be found in which module.
+
+Makes the life easier.
+
+
+Implementation
+==============
+
+For compatibility reasons the pathlib should contain wrappers to
+the original functions.  The original functions should remain
+at their original place.  (Or if pathlib contains the function, the
+original modules should have a wrapper to it.)
+
+
+List of mentioned functions
+===========================
+
+    * os.link => path.hardlink_to
+      (should be named similarly to path.softlink_to)
+
+    * os.mkfifo
+
+    * os.readlink
+
+    * os.remove
+
+    * os.removedirs
+      (shutil.rmtree has the same functionalaty)
+
+    * os.truncate
+
+    * shutil.copyfileobj
+
+    * shutil.copyfile
+
+    * shutil.copymode
+
+    * shutil.copystat
+
+    * shutil.copy
+
+    * shutil.copy2
+
+    * shutil.copytree with shutil.ignore_patterns
+
+    * shutil.move
+
+    * shutil.disk_usage
+
+    * shutil.chown
+
+All functions from os module accept path-like objects,
+and none of the shutil functions.
+
+
+Copyright
+=========
+
+This document has been placed in the public domain.
+
+
+
+..
+   Local Variables:
+   mode: indented-text
+   indent-tabs-mode: nil
+   sentence-end-double-space: t
+   fill-column: 70
+   coding: utf-8
+   End:
